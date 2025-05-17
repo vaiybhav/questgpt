@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateAIResponse } from '@/lib/geminiService';
+import { generateResponse } from '@/lib/geminiService';
 import { 
   containsProhibitedContent, 
   filterProhibitedContent, 
@@ -9,29 +9,24 @@ import {
 
 export async function POST(req: NextRequest) {
   try {
-    // Parse the JSON request body
-    const body = await req.json();
-    const { command, context, genre } = body;
+    const { command, context, genre } = await req.json();
     
-    if (!command) {
-      return NextResponse.json(
-        { error: 'Command is required' },
-        { status: 400 }
-      );
+    if (!command?.trim()) {
+      return NextResponse.json({ error: 'Command required' }, { status: 400 });
     }
 
-    // Check for prohibited content in the command
+    // Check content
     if (containsProhibitedContent(command)) {
-      return NextResponse.json(
-        { response: getContentWarningMessage() },
-        { status: 200 }
-      );
+      return NextResponse.json({ 
+        response: "Let's keep our story family-friendly! Try rephrasing that." 
+      });
     }
     
-    console.log(`API route received: command="${command}", genre="${genre || 'not specified'}"`);
+    console.log(`Processing command: "${command}", genre: ${genre || 'none'}`);
     
-    // Generate the AI response
-    const response = await generateAIResponse(command, context, genre);
+    // Get response
+    const response = await generateResponse(command, context, genre);
+    const filtered = filterProhibitedContent(response);
     
     // Check if the response is educational about inappropriate content
     if (isEducationalResponse(response)) {
@@ -39,17 +34,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ response });
     }
     
-    // Otherwise, filter any prohibited content from AI response
-    const filteredResponse = filterProhibitedContent(response);
-    
     // Return the filtered response
-    return NextResponse.json({ response: filteredResponse });
+    return NextResponse.json({ response: filtered });
     
-  } catch (error: any) {
-    console.error('Error generating AI response:', error);
-    
+  } catch (err: any) {
+    console.error('Generation error:', err);
     return NextResponse.json(
-      { error: 'Failed to generate response', details: error.message },
+      { error: 'Failed to continue story', details: err.message },
       { status: 500 }
     );
   }

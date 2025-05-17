@@ -28,7 +28,7 @@ QuestGPT is an AI-powered text adventure game where your choices shape the story
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/questgpt.git
+   git clone https://github.com/vaiybhav/questgpt.git
    cd questgpt
    ```
 

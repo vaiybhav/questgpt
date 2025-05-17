@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QuestGPT
 
-## Getting Started
+QuestGPT is an AI-powered text adventure game where your choices shape the story.
 
-First, run the development server:
+## ✨ Features
+
+- Modern, mobile-friendly UI
+- Genre selection (Fantasy, Mystery, Sci-Fi)
+- Interactive gameplay through text commands
+- AI-generated story narratives
+
+## 🛠️ Built With
+
+- [Next.js](https://nextjs.org/) 14 (App Router)
+- [React](https://reactjs.org/) 18
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Lucide Icons](https://lucide.dev/)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18.x or later recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/questgpt.git
+   cd questgpt
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   # yarn install
+   ```
+
+### Running the Development Server
 
 ```bash
 npm run dev
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/`: Contains the core application pages and layouts.
+  - `page.tsx`: Homepage (Genre Selector).
+  - `game/page.tsx`: Gameplay page.
+  - `layout.tsx`: Main application layout.
+  - `globals.css`: Global styles and Tailwind directives.
+- `components/`: Reusable React components.
+  - `GenreSelector.tsx`: Component for selecting the game genre.
+  - `StoryDisplay.tsx`: Component for displaying the AI-generated story.
+  - `CommandInput.tsx`: Component for user command input.
+- `public/`: Static assets.
+- `tailwind.config.ts`: Tailwind CSS configuration.
+- `postcss.config.js`: PostCSS configuration.
+- `next.config.mjs`: Next.js configuration.
+- `tsconfig.json`: TypeScript configuration.
 
-## Learn More
+## 📄 License
 
-To learn more about Next.js, take a look at the following resources:
+This project is open source and available under the MIT License.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is ready to be deployed on [Vercel](https://vercel.com/), the creators of Next.js.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Simply connect your GitHub repository to Vercel and it will automatically build and deploy your application. 

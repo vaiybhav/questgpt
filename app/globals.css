@@ -1,26 +1,24 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-gray-900 text-white;
 }
+
+/* Add these custom scrollbar styles */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  overflow-y: scroll; /* Ensure it's still scrollable if content overflows */
+}
+
+/* You might want to ensure body/html don't have conflicting overflow if issues arise */
+html, body {
+  height: 100%;
+  /* overflow: hidden; Consider if this is needed based on overall layout */
+} 
